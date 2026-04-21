@@ -56,8 +56,8 @@ Header con logo y fondo opcional para el inicio de las plantillas.
 - logoAlt?: string - Texto alternativo del logo
 - logoWidth?: string | number - Ancho del logo
 - logoHeight?: string | number - Alto del logo
-- ackgroundImage?: string - URL de imagen de fondo
-- ackgroundColor?: string - Color de fondo
+- backgroundImage?: string - URL de imagen de fondo
+- backgroundColor?: string - Color de fondo
 - paddingTop?, paddingBottom?, paddingLeft?, paddingRight?: string | number - Espaciado
 
 **Ejemplo de uso:**
@@ -77,8 +77,8 @@ import { EmailHeader } from './components/EmailHeader';
 Footer con logos de marcas enlazados.
 
 **Props:**
-- logos: LogoItem[] - Array de objetos con src, lt y href
-- ackgroundColor?: string - Color de fondo
+- logos: LogoItem[] - Array de objetos con src, alt y href
+- backgroundColor?: string - Color de fondo
 - paddingTop?, paddingBottom?, paddingLeft?, paddingRight?: string | number - Espaciado
 - logoHeight?: string | number - Alto de los logos
 - marginRight?: string | number - Espaciado entre logos
@@ -94,6 +94,27 @@ import { EmailFooter } from './components/EmailFooter';
   ]}
   backgroundColor="#00308b"
 />
+`
+
+### OneColumnText
+
+Sección de una sola columna para contenido de texto con opciones de alineación.
+
+**Props:**
+- children: React.ReactNode - Contenido de texto
+- sectionPadding?, sectionBackgroundColor?: string - Estilos de la sección
+- columnWidth?: string - Ancho de la columna
+- columnPadding?: string | number - Padding de la columna
+- 	extAlign?: 'left' | 'center' | 'right' - Alineación del texto
+
+**Ejemplo de uso:**
+`	sx
+import { OneColumnText } from './components/OneColumnText';
+
+<OneColumnText textAlign="center">
+  <h1>Welcome Message</h1>
+  <p>This is a centered text section...</p>
+</OneColumnText>
 `
 
 ### TwoColumns
@@ -123,12 +144,35 @@ import { TwoColumns } from './components/TwoColumns';
 </TwoColumns>
 `
 
+### TwoColumnsText
+
+Layout de dos columnas con texto en ambas, permitiendo elegir la posición de la primera columna.
+
+**Props:**
+- column1Content: React.ReactNode - Contenido de la primera columna
+- column2Content: React.ReactNode - Contenido de la segunda columna
+- column1Position: 'left' | 'right' - Posición de la primera columna
+- sectionPadding?, sectionBackgroundColor?: string - Estilos de la sección
+- column1Width?, column2Width?: string - Ancho de las columnas
+- column1Padding?, column2Padding?: string | number - Padding de las columnas
+
+**Ejemplo de uso:**
+`	sx
+import { TwoColumnsText } from './components/TwoColumnsText';
+
+<TwoColumnsText
+  column1Content={<div><h2>Columna 1</h2><p>Contenido de la primera columna</p></div>}
+  column2Content={<div><h2>Columna 2</h2><p>Contenido de la segunda columna</p></div>}
+  column1Position="left"
+/>
+`
+
 ### Plantilla Completa de Ejemplo
 
 Aquí tienes un ejemplo de cómo combinar estos componentes para crear una plantilla completa:
 
 `	sx
-import { BodyStructure, EmailHeader, EmailFooter, TwoColumns } from './components/[component]';
+import { BodyStructure, EmailHeader, EmailFooter, OneColumnText, TwoColumns, TwoColumnsText } from './components/[component]';
 
 export default function DemoEmail() {
   return (
@@ -138,14 +182,25 @@ export default function DemoEmail() {
         backgroundImage="https://example.com/background.jpg"
       />
 
+      <OneColumnText textAlign="center">
+        <h1>Platform Update</h1>
+        <p>Hello! We're excited to announce some important updates to our platform...</p>
+      </OneColumnText>
+
       <TwoColumns
         imageSrc="https://example.com/screenshot.png"
         imageAlt="Product screenshot"
         imagePosition="right"
       >
-        <h1>Platform Update</h1>
-        <p>Hello! We're excited to announce some important updates to our platform...</p>
+        <h2>New Features</h2>
+        <p>Check out our latest features...</p>
       </TwoColumns>
+
+      <TwoColumnsText
+        column1Content={<div><h2>Features</h2><ul><li>New dashboard</li><li>Enhanced security</li></ul></div>}
+        column2Content={<div><h2>Benefits</h2><p>These updates will improve your experience...</p></div>}
+        column1Position="left"
+      />
 
       <EmailFooter
         logos={[
