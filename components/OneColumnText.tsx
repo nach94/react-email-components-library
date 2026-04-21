@@ -1,8 +1,8 @@
-﻿import {
+import {
     Section,
     Row,
     Column,
-} from 'react-email';
+} from '@react-email/components';
 
 interface OneColumnTextProps {
     children: React.ReactNode;

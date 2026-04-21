@@ -4,7 +4,7 @@ import {
     Column,
     Link,
     Img,
-} from 'react-email';
+} from '@react-email/components';
 
 interface LogoItem {
     src: string;
@@ -62,6 +62,8 @@ export const EmailFooter = ({
                                     width="auto"
                                     style={{
                                         display: 'block',
+                                        height: logoHeight,
+                                        width: 'auto',
                                     }}
                                 />
                             </Link>

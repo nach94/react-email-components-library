@@ -2,7 +2,7 @@ import {
     Section,
     Row,
     Column,
-} from 'react-email';
+} from '@react-email/components';
 
 interface TwoColumnsTextProps {
     column1Content: React.ReactNode;

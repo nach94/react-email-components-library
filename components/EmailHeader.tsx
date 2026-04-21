@@ -3,7 +3,7 @@ import {
     Row,
     Column,
     Img,
-} from 'react-email';
+} from '@react-email/components';
 
 interface EmailHeaderProps {
     logoSrc: string;
