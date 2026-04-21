@@ -1,218 +1,148 @@
-﻿# React Email Starter
+﻿# 📧 Maquetador de Plantillas de Email
 
-A live preview right in your browser so you don't need to keep sending real emails during development.
+<p align="center">
+  <img src="https://react.email/_next/image?url=%2Fbrand%2Flogo.png&w=128&q=75" alt="React Email Logo" width="200px">
+</p>
 
-## Getting Started
+<p align="center">
+  <strong>Crea plantillas de email profesionales y responsivas con React.</strong><br />
+  Una base sólida y personalizable para tus comunicaciones por correo electrónico.
+</p>
 
-First, install the dependencies:
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/React_Email-000000?style=for-the-badge&logo=react&logoColor=white" alt="React Email">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License MIT">
+</p>
 
-`sh
-npm install
-# or
-yarn
-`
+---
 
-Then, run the development server:
+## 🚀 Inicio Rápido
 
-`sh
-npm run dev
-# or
-yarn dev
-`
+Obtén una vista previa en vivo directamente en tu navegador sin necesidad de enviar correos reales durante el desarrollo.
 
-Open [localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  **Instalar dependencias:**
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
 
-## Componentes Personalizados
+2.  **Iniciar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    # o
+    yarn dev
+    ```
 
-Este proyecto incluye componentes reutilizables personalizados para facilitar la creación de plantillas de email consistentes. Todos los componentes están ubicados en la carpeta components/.
+3.  **Ver el resultado:**
+    Abre [localhost:3000](http://localhost:3000) en tu navegador.
 
-### BodyStructure
+---
 
-Componente base que proporciona la estructura HTML esencial para todas las plantillas de email.
+## ✨ Características Principales
 
-**Props:**
-- previewText?: string - Texto que se muestra en la preview del email
-- children?: React.ReactNode - Contenido del email
+- 📱 **Diseño Responsivo**: Plantillas que se ven bien en cualquier dispositivo.
+- 🧩 **Componentes Reutilizables**: Biblioteca de componentes listos para usar.
+- ⚡ **Preview en Tiempo Real**: Edita y mira los cambios instantáneamente.
+- 🛠️ **Fácil de Personalizar**: Estructura modular basada en componentes de React.
 
-**Ejemplo de uso:**
-`	sx
-import { BodyStructure } from './components/BodyStructure';
+---
 
-export default function MyEmail() {
-  return (
-    <BodyStructure previewText="Welcome to our platform">
-      {/* Email content here */}
-    </BodyStructure>
-  );
-}
-`
+## 🏗️ Componentes Personalizados
 
-### EmailHeader
+Este proyecto incluye componentes reutilizables en la carpeta `components/` para garantizar consistencia.
 
-Header con logo y fondo opcional para el inicio de las plantillas.
+### 📦 Estructura Base
 
-**Props:**
-- logoSrc: string - URL de la imagen del logo
-- logoAlt?: string - Texto alternativo del logo
-- logoWidth?: string | number - Ancho del logo
-- logoHeight?: string | number - Alto del logo
-- backgroundImage?: string - URL de imagen de fondo
-- backgroundColor?: string - Color de fondo
-- paddingTop?, paddingBottom?, paddingLeft?, paddingRight?: string | number - Espaciado
+#### `BodyStructure`
+Proporciona la estructura HTML esencial.
+- **Props:**
+  - `previewText`: Texto que se muestra en la preview del email.
+  - `children`: Contenido del email.
 
-**Ejemplo de uso:**
-`	sx
-import { EmailHeader } from './components/EmailHeader';
+---
 
-<EmailHeader
-  logoSrc="https://example.com/logo.png"
-  backgroundImage="https://example.com/background.jpg"
-  paddingTop="5rem"
-  paddingBottom="5rem"
-/>
-`
+### 🎨 Diseño y Layout
 
-### EmailFooter
+#### `EmailHeader`
+Header con soporte para logo y fondos.
+- **Props principales:** `logoSrc`, `backgroundImage`, `backgroundColor`, `padding`.
 
-Footer con logos de marcas enlazados.
+#### `OneColumnText`
+Sección de texto de una sola columna.
+- **Props principales:** `textAlign`, `columnWidth`, `sectionBackgroundColor`.
 
-**Props:**
-- logos: LogoItem[] - Array de objetos con src, alt y href
-- backgroundColor?: string - Color de fondo
-- paddingTop?, paddingBottom?, paddingLeft?, paddingRight?: string | number - Espaciado
-- logoHeight?: string | number - Alto de los logos
-- marginRight?: string | number - Espaciado entre logos
+#### `TwoColumnsTextImg`
+Layout híbrido de imagen y texto.
+- **Props principales:** `imageSrc`, `imagePosition` (left/right), `imageWidth`.
 
-**Ejemplo de uso:**
-`	sx
-import { EmailFooter } from './components/EmailFooter';
+#### `TwoColumnsText`
+Layout de dos columnas de texto.
+- **Props principales:** `column1Content`, `column2Content`, `column1Position`.
 
-<EmailFooter
-  logos={[
-    { src: 'https://example.com/logo1.png', alt: 'Company', href: 'https://example.com/' },
-    { src: 'https://example.com/logo2.png', alt: 'Division', href: 'https://example.com/division' },
-  ]}
-  backgroundColor="#00308b"
-/>
-`
+#### `EmailFooter`
+Footer con logos de marca y enlaces.
+- **Props principales:** `logos` (array de objetos), `backgroundColor`.
 
-### OneColumnText
+---
 
-Sección de una sola columna para contenido de texto con opciones de alineación.
+## 📝 Ejemplo de Uso
 
-**Props:**
-- children: React.ReactNode - Contenido de texto
-- sectionPadding?, sectionBackgroundColor?: string - Estilos de la sección
-- columnWidth?: string - Ancho de la columna
-- columnPadding?: string | number - Padding de la columna
-- 	extAlign?: 'left' | 'center' | 'right' - Alineación del texto
-
-**Ejemplo de uso:**
-`	sx
-import { OneColumnText } from './components/OneColumnText';
-
-<OneColumnText textAlign="center">
-  <h1>Welcome Message</h1>
-  <p>This is a centered text section...</p>
-</OneColumnText>
-`
-
-### TwoColumns
-
-Layout de dos columnas con imagen y texto, permitiendo elegir el lado de la imagen.
-
-**Props:**
-- imageSrc: string - URL de la imagen
-- imageAlt: string - Texto alternativo
-- imagePosition: 'left' | 'right' - Posición de la imagen
-- children: React.ReactNode - Contenido de texto
-- imageWidth?, imageHeight?: string | number - Dimensiones de la imagen
-- sectionPadding?, sectionBackgroundColor?: string - Estilos de la sección
-- imageColumnWidth?, textColumnWidth?: string - Ancho de las columnas
-
-**Ejemplo de uso:**
-`	sx
-import { TwoColumns } from './components/TwoColumns';
-
-<TwoColumns
-  imageSrc="https://example.com/image.jpg"
-  imageAlt="Product screenshot"
-  imagePosition="left"
->
-  <h1>Product Update</h1>
-  <p>Check out our latest features...</p>
-</TwoColumns>
-`
-
-### TwoColumnsText
-
-Layout de dos columnas con texto en ambas, permitiendo elegir la posición de la primera columna.
-
-**Props:**
-- column1Content: React.ReactNode - Contenido de la primera columna
-- column2Content: React.ReactNode - Contenido de la segunda columna
-- column1Position: 'left' | 'right' - Posición de la primera columna
-- sectionPadding?, sectionBackgroundColor?: string - Estilos de la sección
-- column1Width?, column2Width?: string - Ancho de las columnas
-- column1Padding?, column2Padding?: string | number - Padding de las columnas
-
-**Ejemplo de uso:**
-`	sx
-import { TwoColumnsText } from './components/TwoColumnsText';
-
-<TwoColumnsText
-  column1Content={<div><h2>Columna 1</h2><p>Contenido de la primera columna</p></div>}
-  column2Content={<div><h2>Columna 2</h2><p>Contenido de la segunda columna</p></div>}
-  column1Position="left"
-/>
-`
-
-### Plantilla Completa de Ejemplo
-
-Aquí tienes un ejemplo de cómo combinar estos componentes para crear una plantilla completa:
-
-`	sx
-import { BodyStructure, EmailHeader, EmailFooter, OneColumnText, TwoColumns, TwoColumnsText } from './components/[component]';
+```tsx
+import { BodyStructure, EmailHeader, EmailFooter, OneColumnText, TwoColumnsTextImg } from './components';
 
 export default function DemoEmail() {
   return (
-    <BodyStructure previewText="Important Update">
+    <BodyStructure previewText="Actualización Importante">
       <EmailHeader
         logoSrc="https://example.com/logo.png"
         backgroundImage="https://example.com/background.jpg"
       />
 
       <OneColumnText textAlign="center">
-        <h1>Platform Update</h1>
-        <p>Hello! We're excited to announce some important updates to our platform...</p>
+        <h1>¡Hola!</h1>
+        <p>Tenemos novedades emocionantes para compartir contigo.</p>
       </OneColumnText>
 
-      <TwoColumns
-        imageSrc="https://example.com/screenshot.png"
-        imageAlt="Product screenshot"
+      <TwoColumnsTextImg
+        imageSrc="https://example.com/feature.png"
+        imageAlt="Nueva característica"
         imagePosition="right"
       >
-        <h2>New Features</h2>
-        <p>Check out our latest features...</p>
-      </TwoColumns>
-
-      <TwoColumnsText
-        column1Content={<div><h2>Features</h2><ul><li>New dashboard</li><li>Enhanced security</li></ul></div>}
-        column2Content={<div><h2>Benefits</h2><p>These updates will improve your experience...</p></div>}
-        column1Position="left"
-      />
+        <h2>Nuevas Funciones</h2>
+        <p>Descubre todo lo que hemos añadido este mes...</p>
+      </TwoColumnsTextImg>
 
       <EmailFooter
         logos={[
-          { src: 'https://example.com/logo1.png', alt: 'Company', href: 'https://example.com/' },
-          { src: 'https://example.com/logo2.png', alt: 'Division', href: 'https://example.com/division' },
+          { src: 'https://example.com/logo1.png', alt: 'Empresa', href: 'https://example.com/' }
         ]}
       />
     </BodyStructure>
   );
 }
-`
+```
 
-## License
+---
 
-MIT License
+## 📂 Estructura del Proyecto
+
+```text
+├── components/       # Componentes visuales reutilizables
+├── emails/           # Plantillas de email (archivos .tsx)
+│   └── static/       # Imágenes y assets estáticos
+├── package.json      # Dependencias y scripts
+└── readme.md         # Documentación (¡Estás aquí!)
+```
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo para más detalles.
+
+---
+
+<p align="center">Hecho con ❤️ para desarrolladores de emails</p>
